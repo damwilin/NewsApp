@@ -1,5 +1,8 @@
 package com.wili.android.newsapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -100,12 +103,19 @@ public class Utils {
                 String title = currResult.optString("webTitle");
                 String date = currResult.optString("webPublicationDate");
                 String section = currResult.optString("sectionName");
-                URL articleURL = createURL(currResult.optString("webUrl"));
+                String articleURL = currResult.optString("webUrl");
                 newsItems.add(new NewsItem(title, date, section, articleURL));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the json result", e);
         }
         return newsItems;
+    }
+
+    public static void openWebPage(Context context, NewsItem currNewsItem) {
+        Uri webpage = Uri.parse(currNewsItem.getArticleWebPage());
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(context.getPackageManager()) != null)
+            context.startActivity(intent);
     }
 }

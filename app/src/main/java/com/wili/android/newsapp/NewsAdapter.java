@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 public class NewsAdapter extends ArrayAdapter<NewsItem> {
     private View listView;
 
-    public NewsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<NewsItem> objects) {
+    public NewsAdapter(@NonNull Context context, @NonNull List<NewsItem> objects) {
         super(context, 0, objects);
     }
 

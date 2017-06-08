@@ -1,7 +1,5 @@
 package com.wili.android.newsapp;
 
-import java.net.URL;
-
 /**
  * Created by Damian on 6/6/2017.
  */
@@ -10,13 +8,13 @@ public class NewsItem {
     private String title;
     private String date;
     private String sectionName;
-    private URL articleURL;
+    private String articleWebPage;
 
-    public NewsItem(String title, String date, String sectionName, URL articleURL) {
+    public NewsItem(String title, String date, String sectionName, String articleWebPage) {
         this.title = title;
         this.date = date;
         this.sectionName = sectionName;
-        this.articleURL = articleURL;
+        this.articleWebPage = articleWebPage;
     }
 
     public String getTitle() {
@@ -31,7 +29,7 @@ public class NewsItem {
         return sectionName;
     }
 
-    public URL getArticleURL() {
-        return articleURL;
+    public String getArticleWebPage() {
+        return articleWebPage;
     }
 }
