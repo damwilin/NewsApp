@@ -2,6 +2,8 @@ package com.wili.android.newsapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,12 +27,13 @@ import java.util.ArrayList;
 
 public class Utils {
     private static final String LOG_TAG = Utils.class.getSimpleName();
+    private static final String REQUEST_LINK = "";
 
     private Utils() {
     }
 
-    public static ArrayList<NewsItem> fetchData(String requestURL) {
-        URL url = createURL(requestURL);
+    public static ArrayList<NewsItem> fetchData() {
+        URL url = createURL(REQUEST_LINK);
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
@@ -117,5 +120,12 @@ public class Utils {
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         if (intent.resolveActivity(context.getPackageManager()) != null)
             context.startActivity(intent);
+    }
+
+    public static boolean isConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnected();
+        return isConnected;
     }
 }
