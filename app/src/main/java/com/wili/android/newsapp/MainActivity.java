@@ -1,10 +1,7 @@
 package com.wili.android.newsapp;
 
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.Loader;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<NewsItem>> {
     private static final int LOADER_ID = 1;
-    private static final String REQUEST_LINK = "http://content.guardianapis.com/search?q=music&debates&api-key=test";
+    private static final String REQUEST_LINK = "http://content.guardianapis.com/search?q=android&section=technology&show-references=all&api-key=test";
     @BindView(R.id.list_view)
     ListView listView;
     @BindView(R.id.progress_bar)
@@ -41,12 +38,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         newsAdapter = new NewsAdapter(this, new ArrayList<NewsItem>());
         listView.setAdapter(newsAdapter);
         listView.setEmptyView(emptyView);
-/**
- ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
- NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
- boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
- if (isConnected)
- getLoaderManager().initLoader() */
 
         if (Utils.isConnected(getBaseContext())) {
             loaderManager = getLoaderManager();

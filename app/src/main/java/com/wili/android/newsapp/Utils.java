@@ -20,6 +20,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -108,12 +110,20 @@ public class Utils {
                 JSONObject currResult = newsArray.getJSONObject(i);
                 String title = currResult.optString("webTitle");
                 String date = currResult.optString("webPublicationDate");
+                if (date == null)
+                    date = "Unkown date";
+                else {
+                    date = new SimpleDateFormat("yyyy-mm-dd").parse(date).toString();
+
+                }
                 String section = currResult.optString("sectionName");
                 String articleURL = currResult.optString("webUrl");
                 newsItems.add(new NewsItem(title, date, section, articleURL));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the json result", e);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return newsItems;
     }

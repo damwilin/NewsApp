@@ -7,19 +7,17 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="How to change the world?"/>
+        style="@style/item_textView"
+        tools:text="How to change the world?" />
+
     <TextView
         android:id="@+id/section_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/item_textView"
         tools:text="sport" />
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="20-02-20017"/>
+        style="@style/item_textView"
+        tools:text="20-02-20017" />
 
 </LinearLayout>
