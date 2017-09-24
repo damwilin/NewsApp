@@ -8,13 +8,13 @@ public class NewsItem {
     private String title;
     private String date;
     private String sectionName;
-    private String articleWebPage;
+    private String articleUrl;
 
-    public NewsItem(String title, String date, String sectionName, String articleWebPage) {
+    public NewsItem(String title, String date, String sectionName, String articleUrl) {
         this.title = title;
         this.date = date;
         this.sectionName = sectionName;
-        this.articleWebPage = articleWebPage;
+        this.articleUrl = articleUrl;
     }
 
     public String getTitle() {
@@ -29,7 +29,7 @@ public class NewsItem {
         return sectionName;
     }
 
-    public String getArticleWebPage() {
-        return articleWebPage;
+    public String getArticleUrl() {
+        return articleUrl;
     }
 }

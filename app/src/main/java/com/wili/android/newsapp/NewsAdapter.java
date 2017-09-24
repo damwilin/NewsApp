@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 public class NewsAdapter extends ArrayAdapter<NewsItem> {
     private View listView;
 
-    public NewsAdapter(@NonNull Context context, @NonNull List<NewsItem> objects) {
+    public NewsAdapter(@NonNull Context context, @NonNull ArrayList<NewsItem> objects) {
         super(context, 0, objects);
     }
 
@@ -39,7 +40,6 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
         holder.title.setText(currNews.getTitle());
         holder.date.setText(currNews.getDate());
         holder.section.setText(currNews.getSectionName());
-
         return listView;
     }
     static class ViewHolder{
